@@ -1,9 +1,162 @@
-li {
+/* GLOBAL */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding:0 20px;
+}
+
+h2 {
+    margin: 0 0 1em 0;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px;
+    z-index: 1;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width: 47%;
+    max-height: 70vh;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* FORM */
+
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 97%;
+}
+
+form.container {
+    margin: auto;
+}
+
+input {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border: none;
+    font-size: 1.25em;
+    padding: 10px;
+}
+  
+label {
     margin-bottom: 10px;
 }
 
+form button {
+    margin: auto 0;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 25px;
+}
+  
+div.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 20px 0;
+}
+
+div.item {
+    width: 60%;
+}
+
+div.price {
+    width: 18%;
+}
+
+button.add-button {
+    width: 15%;
+    font-size: 1.5em;
+    margin-left: auto;
+}
+
+button.add-button:hover {
+    background-color: #039503;
+}
+
+
+/* LISTS - GENERAL */
+section#lists {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+ul {
+    list-style: none;
+    padding: 0 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+div#left,
+div#right {
+    min-height: 70vh;
+}
+
+/* LIST ITEMS */
+li {
+    margin-bottom: 12px;
+}
+
+li span {
+    font-size: 1.125em;
+}
+
 li button {
-    font-size: 8px;
+    font-size: 1.75rem;
     margin-left: 20px;
     color: #666;
+    width: 2.5em;
 }
+
+.item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+span.item-price {
+    margin: 0 20px;
+}
+
+button.delete-button{
+    background: #dd4444;
+    color: #f5f5f5;
+    border: none;
+    padding: 5px;
+}
+
+button.delete-button:hover{
+    background-color: #bc0707;
+}
+
+button.check-button {
+    background: #54b624;
+    color: #f5f5f5;
+    border: none;
+    padding: 5px;
+}
+
+button.check-button:hover {
+    background-color: #039503;
+}
+
+
