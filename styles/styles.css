@@ -107,7 +107,13 @@ div#right {
     min-height: 70vh;
 }
 
+ul#purchased-items-list {
+    max-height: 52vh;
+}
+
+
 /* LIST ITEMS */
+
 li {
     margin-bottom: 12px;
 }
@@ -123,7 +129,7 @@ li button {
     width: 2.5em;
 }
 
-.item-card {
+li.item-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -131,6 +137,11 @@ li button {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     background-color: #fff;
+}
+
+li.purchased {
+    background-color:#c7c4c4;
+    text-decoration: line-through;
 }
 
 span.item-price {
@@ -160,3 +171,17 @@ button.check-button:hover {
 }
 
 
+/* PRICE */
+div#total-price {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+}
+
+div#total-price p {
+    display: inline;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0.45em;
+}
