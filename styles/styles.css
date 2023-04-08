@@ -76,13 +76,13 @@ div.price {
     width: 18%;
 }
 
-button.add-button {
+button#add-button {
     width: 15%;
     font-size: 1.5em;
     margin-left: auto;
 }
 
-button.add-button:hover {
+button#add-button:hover {
     background-color: #039503;
 }
 
