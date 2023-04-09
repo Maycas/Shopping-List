@@ -8,19 +8,12 @@ const addItemButton = document.getElementById('add-button')
 const shoppingList = document.getElementById('shopping-list')
 const purchasedList = document.getElementById('purchased-items-list')
 
+// Price
+const priceTag = document.getElementById('price-tag')
+priceTag.innerText = '0.00'
+
 // Items
-let items = [
-    {
-        name: 'Lettuce',
-        price: 0.4,
-        hasBeenPurchased: false,
-    },
-    {
-        name: 'Tomato',
-        price: 0.0,
-        hasBeenPurchased: false,
-    }
-]
+let items = []
 
 // Render functions
 const createButtons = () => {
@@ -83,15 +76,20 @@ const renderShoppingList = () => {
 }
 
 const renderPurchasedList = () => {
-    console.log('render purchased shopping list')
     purchasedList.innerHTML = ''
 
     const purchasedItems = items.filter(item => item.hasBeenPurchased)
+    const totalPrice = purchasedItems.reduce((accumulator, currentItem) => {
+        return accumulator + parseFloat(currentItem.price)
+    }, 0)
 
+    // Update the price to show the addition of all purchased items
     purchasedItems.forEach(item => {
         const listItem = createListItem(item.name, item.price)
         purchasedList.appendChild(listItem)
     })
+
+    priceTag.innerText = totalPrice.toFixed(2)
 }
 
 // Helper functions
@@ -166,6 +164,3 @@ const checkButtonClicked = (event) => {
 addItemButton.addEventListener('click', (event) => {
     addToList(event)
 })
-
-// Main
-renderShoppingList()
