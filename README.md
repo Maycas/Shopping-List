@@ -1,6 +1,6 @@
 # Shopping List
 
-Shopping List frontend application built using vanilla javascript with the following features / characteristics:
+Shopping List frontend application from the Master of Full Stack Development of Nuclio Digital School, built using vanilla javascript with the following features / characteristics:
 
 - Add elements to the list after writing them in the input
 - Delete the input text after clicking 'Add'

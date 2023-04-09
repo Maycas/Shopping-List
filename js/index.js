@@ -10,11 +10,11 @@ const purchasedList = document.getElementById('purchased-items-list')
 
 // Items
 let items = [
-    // {
-    //     name: 'Lettuce',
-    //     price: 0.4,
-    //     hasBeenPurchased: false,
-    // }
+    {
+        name: 'Lettuce',
+        price: 0.4,
+        hasBeenPurchased: false,
+    }
 ]
 
 // Render functions
@@ -78,17 +78,21 @@ const renderList = (containerNode, itemsToRender) => {
 }
 
 // Helper functions
-
+const doesElementExist = (name) => {
+    // Avoid the possibility to add an element already in the list
+    return items.filter(item => item.name.toLowerCase() === name.toLowerCase()).length > 0
+}
 
 
 // Event listeners
 const addToList = (event) => {
+    // Adding elements to the list after writing them in the input
     event.preventDefault()
 
     const name = itemToAdd.value
     let price = itemPrice.value
 
-    const nameIsValid = (name.length !== 0)
+    const nameIsValid = (name.length !== 0) && !doesElementExist(name)
 
     if(nameIsValid) {
         // Price is not mandatory, if not filled in use 0.00
@@ -102,7 +106,6 @@ const addToList = (event) => {
             hasBeenPurchased: false,
         }
 
-        // Update list and re-render in UI
         items.push(newItem)
         renderList(shoppingList, items)
 
@@ -117,7 +120,14 @@ const addToList = (event) => {
 }
 
 const deleteButtonClicked = (event) => {
-    console.log(event.target.closest('.item-card'))
+    // Added a delete button that deletes the clicked element
+    const clickedItem = event.target.closest('.item-card')
+    const clickedItemName = clickedItem.querySelector('.item-name').innerText
+
+    items = items.filter(item => item.name !== clickedItemName)
+
+    // TODO: Check if we need to re-render the purchased list too if a bought item has been deleted
+    renderList(shoppingList, items)
 }
 
 const checkButtonClicked = (event) => {
@@ -130,3 +140,4 @@ addItemButton.addEventListener('click', (event) => {
 })
 
 // Main
+renderList(shoppingList, items)
