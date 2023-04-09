@@ -141,6 +141,10 @@ li.item-card {
 
 li.purchased {
     background-color:#c7c4c4;
+    
+}
+
+li.purchased span {
     text-decoration: line-through;
 }
 
