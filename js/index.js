@@ -14,6 +14,11 @@ let items = [
         name: 'Lettuce',
         price: 0.4,
         hasBeenPurchased: false,
+    },
+    {
+        name: 'Tomato',
+        price: 0.0,
+        hasBeenPurchased: false,
     }
 ]
 
@@ -44,7 +49,7 @@ const createButtons = () => {
     return actionButtons
 }
 
-const createListItem = (name, price, hasBeenPurchased) => {
+const createListItem = (name, price, hasBeenPurchased = false) => {
     const listItem = document.createElement('li')
     listItem.classList.add('item-card')
 
@@ -68,12 +73,24 @@ const createListItem = (name, price, hasBeenPurchased) => {
     return listItem
 }
 
-const renderList = (containerNode, itemsToRender) => {
-    containerNode.innerHTML = '' // reset content in the list to re-render
+const renderShoppingList = () => {
+    shoppingList.innerHTML = '' // reset content in the list to re-render
 
-    itemsToRender.forEach(item => {
+    items.forEach(item => {
         const listItem = createListItem(item.name, item.price, item.hasBeenPurchased)
-        containerNode.appendChild(listItem)
+        shoppingList.appendChild(listItem)
+    })
+}
+
+const renderPurchasedList = () => {
+    console.log('render purchased shopping list')
+    purchasedList.innerHTML = ''
+
+    const purchasedItems = items.filter(item => item.hasBeenPurchased)
+
+    purchasedItems.forEach(item => {
+        const listItem = createListItem(item.name, item.price)
+        purchasedList.appendChild(listItem)
     })
 }
 
@@ -107,7 +124,7 @@ const addToList = (event) => {
         }
 
         items.push(newItem)
-        renderList(shoppingList, items)
+        renderShoppingList(shoppingList, items)
 
         // Delete input text after clicking 'Add'
         itemToAdd.value = ''
@@ -115,7 +132,8 @@ const addToList = (event) => {
         // Keep focus on input
         itemToAdd.focus()
     } else {
-        console.error('Already existing or empty item')
+        alert(`Item ${name} already exists or you entered an empty item`)
+        console.error(`Item '${name}' already exists or you entered an empty item`)
     }
 }
 
@@ -126,8 +144,8 @@ const deleteButtonClicked = (event) => {
 
     items = items.filter(item => item.name !== clickedItemName)
 
-    // TODO: Check if we need to re-render the purchased list too if a bought item has been deleted
-    renderList(shoppingList, items)
+    renderShoppingList()
+    renderPurchasedList()
 }
 
 const checkButtonClicked = (event) => {
@@ -140,7 +158,8 @@ const checkButtonClicked = (event) => {
     // Swap current value with new opposite
     items[itemIdx]['hasBeenPurchased'] = !items[itemIdx]['hasBeenPurchased']
 
-    renderList(shoppingList, items)  
+    renderShoppingList()  
+    renderPurchasedList()
 }
 
 // Register listeners
@@ -149,4 +168,4 @@ addItemButton.addEventListener('click', (event) => {
 })
 
 // Main
-renderList(shoppingList, items)
+renderShoppingList()
