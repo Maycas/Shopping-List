@@ -150,6 +150,7 @@ li.purchased span {
 
 span.item-price {
     margin: 0 20px;
+    margin-left: auto;
 }
 
 button.delete-button{

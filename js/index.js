@@ -124,8 +124,9 @@ const addToList = (event) => {
         items.push(newItem)
         renderShoppingList(shoppingList, items)
 
-        // Delete input text after clicking 'Add'
+        // Delete input text and price text after clicking 'Add'
         itemToAdd.value = ''
+        itemPrice.value = ''
 
         // Keep focus on input
         itemToAdd.focus()
