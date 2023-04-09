@@ -131,7 +131,16 @@ const deleteButtonClicked = (event) => {
 }
 
 const checkButtonClicked = (event) => {
-    console.log(event.target.closest('.item-card'))
+    // Check or uncheck an element as purchased
+    const clickedItem = event.target.closest('.item-card')
+    const clickedItemName = clickedItem.querySelector('.item-name').innerText
+
+    itemIdx = items.indexOf(items.find(item => item.name === clickedItemName))
+
+    // Swap current value with new opposite
+    items[itemIdx]['hasBeenPurchased'] = !items[itemIdx]['hasBeenPurchased']
+
+    renderList(shoppingList, items)  
 }
 
 // Register listeners
